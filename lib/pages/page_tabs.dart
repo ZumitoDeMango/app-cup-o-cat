@@ -4,7 +4,9 @@ import 'package:proyecto_moviles/pages/tab_search.dart';
 import 'package:proyecto_moviles/pages/tab_profile.dart';
 
 class PageTabs extends StatefulWidget {
-  const PageTabs({super.key});
+  final String username; // Agregar el parámetro username
+
+  const PageTabs({super.key, required this.username}); // Recibir el username en el constructor
 
   @override
   State<PageTabs> createState() => _PageTabsState();
@@ -12,13 +14,20 @@ class PageTabs extends StatefulWidget {
 
 class _PageTabsState extends State<PageTabs> {
   int _currentIndex = 0;
-  
+
   // Aquí hemos eliminado la referencia a la pestaña de favoritos (TabLikes)
-  List<Map<String, dynamic>> _paginas = [
-    {'pagina': TabHome(), 'texto': 'Inicio', 'icono': Icons.home},
-    {'pagina': TabSearch(), 'texto': 'Búsqueda', 'icono': Icons.search},
-    {'pagina': TabProfile(), 'texto': 'Perfil', 'icono': Icons.person},
-  ];
+  List<Map<String, dynamic>> _paginas = [];
+
+  @override
+  void initState() {
+    super.initState();
+    // Inicializamos las páginas, incluyendo TabProfile con el username recibido
+    _paginas = [
+      {'pagina': const TabHome(), 'texto': 'Inicio', 'icono': Icons.home},
+      {'pagina': const TabSearch(), 'texto': 'Búsqueda', 'icono': Icons.search},
+      {'pagina': TabProfile(username: widget.username), 'texto': 'Perfil', 'icono': Icons.person},
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,17 +37,17 @@ class _PageTabsState extends State<PageTabs> {
         type: BottomNavigationBarType.shifting,
         items: [
           BottomNavigationBarItem(
-            backgroundColor: Color(0xFF523a34),
+            backgroundColor: const Color(0xFF523a34),
             icon: Icon(_paginas[0]['icono']),
             label: _paginas[0]['texto'],
           ),
           BottomNavigationBarItem(
-            backgroundColor: Color(0xFF523a34),
+            backgroundColor: const Color(0xFF523a34),
             icon: Icon(_paginas[1]['icono']),
             label: _paginas[1]['texto'],
           ),
           BottomNavigationBarItem(
-            backgroundColor: Color(0xFF523a34),
+            backgroundColor: const Color(0xFF523a34),
             icon: Icon(_paginas[2]['icono']),
             label: _paginas[2]['texto'],
           ),
