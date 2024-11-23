@@ -10,13 +10,25 @@ class TabProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Perfil',),
+        title: const Text('Perfil', style: TextStyle(color: Colors.white),),
         backgroundColor: const Color(0xFF523a34),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Container(
+              width: 150, // Ancho del contenedor
+              height: 150, // Alto del contenedor
+              decoration: BoxDecoration(
+                shape: BoxShape.circle, // Forma circular
+                image: DecorationImage(
+                  image: AssetImage('assets/cup_o_cat_icon.png'),
+                  fit: BoxFit.cover, // Ajusta la imagen para cubrir el contenedor
+                ),
+              ),
+            ),
+            const SizedBox(height: 20), // Espaciado entre la imagen y el texto
             Text(
               'Bienvenido, $username!',
               style: const TextStyle(
@@ -38,7 +50,7 @@ class TabProfile extends StatelessWidget {
                 backgroundColor: const Color(0xFF523a34),
                 padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
               ),
-              child: const Text("Cerrar Sesión"),
+              child: Text("Cerrar Sesión", style: TextStyle(color: Colors.white),),
             ),
           ],
         ),

@@ -42,7 +42,7 @@ class _PageLoginState extends State<PageLogin> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: EdgeInsets.fromLTRB(20, 100, 20, 20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -62,7 +62,6 @@ class _PageLoginState extends State<PageLogin> {
                   fit: BoxFit.contain,
                 ),
               ),
-              const SizedBox(height: 24),
               const Text(
                 'Iniciar Sesión',
                 style: TextStyle(
@@ -97,7 +96,7 @@ class _PageLoginState extends State<PageLogin> {
                 ),
                 child: const Text(
                   "Iniciar Sesión",
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(fontSize: 16, color: Colors.white),
                 ),
               ),
               if (_errorMessage.isNotEmpty)
